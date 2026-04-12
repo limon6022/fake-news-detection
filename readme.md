@@ -103,5 +103,8 @@ Open `fake_news_detection.ipynb` in Jupyter or Google Colab.
 - Explaining black-box models with SHAP and LIME
 
 ---
+Limitaions
+Model performs poorly on short texts and out-of-domain content.
+Trained exclusively on US political news 2015-2018
 
 
