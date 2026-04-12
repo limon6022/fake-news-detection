@@ -1,110 +1,36 @@
-# 🧠 Fake News Detection with Explainable AI (XAI)
+# 🔍 Fake News Detector
 
-> Portfolio Project — Built for the Cognitive Technologies Research Group (CoRe) application.
+A machine learning web application that detects fake news using Random Forest classification trained on the WELFake dataset.
 
----
+## Architecture
+- **Frontend**: HTML/CSS/JavaScript (templates/index.html)
+- **Backend**: Flask API (app.py)
+- **Model**: Random Forest — 96% accuracy
+- **Vectorizer**: TF-IDF (5000 features, bigrams)
+- **Dataset**: WELFake (72,134 news articles)
 
-## 📌 Project Overview
+## How It Works
+1. User inputs a news article
+2. Text is cleaned and preprocessed
+3. TF-IDF vectorizer converts text to numbers
+4. Random Forest model predicts Real or Fake
+5. Result shown with confidence percentage
 
-This project builds a **Fake News Classifier** trained on 72,134 real-world news articles. It combines Machine Learning with **Explainable AI (XAI)** techniques — making every prediction transparent and understandable to humans.
+## Known Limitations
+- Trained on US political news (2015-2018) only
+- Performs poorly on short texts under 20 words
+- May misclassify investigative journalism as fake due to dramatic language
+- Does not generalize to cybersecurity, academic, or non-English content
 
-The project directly addresses CoRe's core research area:
-> *"Human-centered and Explainable AI — developing algorithms that predict, classify, and explain their decisions to the user."*
-
----
-
-## 🎯 Results
-
-| Model | Accuracy | F1-Score (Fake) |
-|---|---|---|
-| Logistic Regression | 95% | 0.95 |
-| Naive Bayes | 85% | 0.86 |
-| **Random Forest** | **96%** | **0.96** ✅ |
-
-**Best Model: Random Forest — 96% Accuracy**
-
----
-
-## 🔍 Explainability
-
-### SHAP — Global Explanation
-Which words matter most across ALL 18,034 test articles?
-
-![SHAP Global](outputs/shap_global_bar.png)
-
-### SHAP — Value Distribution
-How does each word's impact vary across articles?
-
-![SHAP Beeswarm](outputs/shap_beeswarm.png)
-
-### LIME — Local Explanation
-Why was THIS specific article classified as fake?
-
-![LIME](outputs/lime_explanation.png)
-
----
-
-## 📁 Project Structure
-fake-news-detection/
-├── fake_news_detection.ipynb   ← full notebook
-├── requirements.txt            ← dependencies
-└── outputs/
-├── fake_news_detector.joblib  ← saved model
-├── shap_global_bar.png        ← SHAP chart
-├── shap_beeswarm.png          ← SHAP chart
-└── lime_explanation.png       ← LIME chart
-
----
-
-## 🚀 How to Run
-
-### 1. Clone the repository
-```bash
-git clone https://github.com/YOUR_USERNAME/fake-news-detection.git
-cd fake-news-detection
-```
-
-### 2. Install dependencies
+## How To Run
 ```bash
 pip install -r requirements.txt
+python app.py
 ```
+Then open http://127.0.0.1:5000
 
-### 3. Get the dataset
-Download WELFake dataset from Kaggle:
-https://www.kaggle.com/datasets/saurabhshahane/fake-news-classification
-
-Place it in:
-data/WELFake_Dataset.csv
-
-### 4. Run the notebook
-Open `fake_news_detection.ipynb` in Jupyter or Google Colab.
-
----
-
-## 🛠️ Tech Stack
-
-| Tool | Purpose |
-|---|---|
-| pandas | Data loading and manipulation |
-| scikit-learn | TF-IDF, models, evaluation |
-| SHAP | Global explainability |
-| LIME | Local explainability |
-| matplotlib | Visualizations |
-| joblib | Model saving |
-
----
-
-## 📊 What I Learned
-
-- How to build an end-to-end ML pipeline
-- Text preprocessing and TF-IDF vectorization
-- Training and comparing multiple classifiers
-- Evaluating models with precision, recall, F1
-- Explaining black-box models with SHAP and LIME
-
----
-Limitaions
-Model performs poorly on short texts and out-of-domain content.
-Trained exclusively on US political news 2015-2018
-
-
+## Future Improvements
+- Add URL scraping for automatic article analysis
+- Integrate BERT for better generalization
+- Add Finnish language support
+- Add source credibility checking
