@@ -1,2 +1,4 @@
 data/WELFake_Dataset.csv
 fake_news_detector.joblib
+outputs/fake_news_detector_v2.joblib
+outputs/fake_news_detector.joblib
