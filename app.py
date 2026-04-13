@@ -4,8 +4,8 @@ import re
 
 app = Flask(__name__)
 
-# Load model bundle
-bundle = joblib.load("outputs/fake_news_detector.joblib")
+# Load new model bundle (trained on WELFake + ISOT)
+bundle = joblib.load("outputs/fake_news_detector_v2.joblib")
 model = bundle["model"]
 vectorizer = bundle["vectorizer"]
 
